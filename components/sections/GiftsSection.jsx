@@ -4,7 +4,6 @@ import React, { useState, useEffect, useRef } from "react";
 import { Gift } from "lucide-react";
 import { quinceMainData } from "@/components/sections/data/main-data";
 
-
 export default function GiftsSection() {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef(null);
@@ -26,7 +25,7 @@ export default function GiftsSection() {
       },
       {
         threshold: 0.3,
-        rootMargin: '50px',
+        rootMargin: "50px",
       }
     );
 
@@ -46,26 +45,26 @@ export default function GiftsSection() {
       ref={sectionRef}
       style={{
         backgroundImage: ` url('${parents.backgroundImage}')`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
-        position: 'relative',
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+        position: "relative",
       }}
       id="gifts"
       className="py-20"
     >
-      
-
       <div className="container text-white mx-auto px-4 p-6 rounded-2xl">
         <div className="max-w-4xl mx-auto text-center space-y-8">
           {/* Título con animación escalonada */}
-          <div className={`transition-all duration-1000 delay-0 ${
-            isVisible 
-              ? 'opacity-100 translate-y-0' 
-              : 'opacity-0 -translate-y-12'
-          }`}>
-            <h2 
-              style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)' }}
+          <div
+            className={`transition-all duration-1000 delay-0 ${
+              isVisible
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 -translate-y-12"
+            }`}
+          >
+            <h2
+              style={{ textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)" }}
               className="font-main-text text-5xl text-indigo-500"
             >
               Regalo
@@ -73,15 +72,15 @@ export default function GiftsSection() {
           </div>
 
           {/* Tarjeta central con animación escalonada */}
-          <div className={`transition-all duration-1000 delay-1000 ${
-            isVisible 
-              ? 'opacity-100 scale-100' 
-              : 'opacity-0 scale-75'
-          }`}>
+          <div
+            className={`transition-all duration-1000 delay-1000 ${
+              isVisible ? "opacity-100 scale-100" : "opacity-0 scale-75"
+            }`}
+          >
             <div className="bg-muted/50 rounded-2xl p-8 max-w-md mx-auto">
               <Gift className="w-16 h-16 text-amber-600 mx-auto mb-4" />
-              <h3 
-                style={{display:'none'}}
+              <h3
+                style={{ display: "none" }}
                 className="font-script text-3xl text-foreground mb-4"
               >
                 {gifts.type}
@@ -92,24 +91,48 @@ export default function GiftsSection() {
           {/* Cards de opciones con animaciones escalonadas */}
           <div className="flex flex-wrap justify-center items-center gap-8 mt-8">
             {giftsOptions.map((option, index) => {
-              const delays = ['delay-2000', 'delay-3000', 'delay-4000', 'delay-5000', 'delay-6000'];
-              const delayClass = delays[index] || 'delay-2000';
-              
+              const delays = [
+                "delay-2000",
+                "delay-3000",
+                "delay-4000",
+                "delay-5000",
+                "delay-6000",
+              ];
+              const delayClass = delays[index] || "delay-2000";
+
               return (
-                <div 
-                  key={option.id} 
+                <div
+                  key={option.id}
                   className={`transition-all duration-1000 ${delayClass} ${
-                    isVisible 
-                      ? 'opacity-100 translate-x-0' 
-                      : `opacity-0 ${index % 2 === 0 ? '-translate-x-12' : 'translate-x-12'}`
+                    isVisible
+                      ? "opacity-100 translate-x-0"
+                      : `opacity-0 ${
+                          index % 2 === 0 ? "-translate-x-12" : "translate-x-12"
+                        }`
                   }`}
                 >
                   <div className="bg-white/70 p-6 rounded-2xl w-64 text-black">
                     <h4 className="text-xl font-medium mb-2">{option.name}</h4>
                     <p className="text-4xl">{option.icon}</p>
-                    <p className="text-muted">
-                      {option.description}
-                    </p>
+                    <p className="text-muted">{option.description}</p>
+                    {option.dataTransfer && (
+                      <div className="bg-slate-400 bg-opacity-60 rounded-2xl p-3 mt-4">
+                        <p className="mt-4 text-sm">
+                        <strong>Datos para transferencia:</strong>
+                        </p>
+                        <br />
+                        <p>
+                           {option.dataTransfer.bank}
+                        </p>
+                        <p>
+                           <strong>{option.dataTransfer.name}</strong>
+                        </p>
+                        <p>
+                           {option.dataTransfer.card}
+                        </p>
+                        
+                      </div>
+                    )}
                   </div>
                 </div>
               );

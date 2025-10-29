@@ -193,6 +193,29 @@ export const quinceMainData = {
           "Sería un detalle maravilloso recibir un regalo sorpresa que refleje tu cariño y buenos deseos.",
         image: "/images/gifts/gift-box.png",
         link: "https://example.com/mesa-de-regalos",
+      },
+      {
+        id: "lluviaDeSobres",
+        name: "Lluvia de Sobres",
+        icon: "💌",
+        description:
+          "Si prefieres, una contribución en efectivo sería muy apreciada para ayudar a hacer realidad mis sueños.",
+        image: "/images/gifts/envelope.png",
+        link: "https://example.com/lluvia-de-sobres",
+      },
+      {
+        id: "transferenciaBancaria",
+        name: "Transferencia Bancaria",
+        icon: "🏦",
+        description:
+          "Puedes hacer una transferencia bancaria a la siguiente cuenta para apoyar en este día especial.",
+        dataTransfer:{
+          bank: "HSBC",
+          name: "Maria Lorena Pérez Vizcarra",
+          card: "4213 1680 5827 1172",
+        },
+        image: "/images/gifts/bank-transfer.png",
+        link: "https://example.com/transferencia-bancaria",
       }
     ],
   },
